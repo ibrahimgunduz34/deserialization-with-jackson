@@ -1,4 +1,6 @@
-# Some Json Deserialization Examples With Jackson For Most Common Cases
+# Most Common JSON Deserialization Needs And Solutions With Jackson
+
+It's a repository created to demonstrate how to solve some problems described below by using Jackson library.
 
 * Deserialize a JSON to a mutable object.
 * Deserialize a JSON to an immutable object.
