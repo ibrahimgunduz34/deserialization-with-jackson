@@ -1,13 +1,9 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import models.ContactDetails;
-import models.ImmutableProduct;
-import models.ImmutableProductWithLombok;
-import models.MutableProduct;
+import models.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -73,15 +69,37 @@ public class JacksonDeserializeTest {
 
         ObjectMapper mapper = new ObjectMapper();
 
-        ContactDetails contactDetails = mapper
+        ImmutableContactDetails contactDetails = mapper
                 .registerModule(new ParameterNamesModule())
                 .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-                .readValue(jsonFile, ContactDetails.class);
+                .readValue(jsonFile, ImmutableContactDetails.class);
 
-        ContactDetails expectedContactDetails = ExpectedObjectBuilder.buildContactDetails();
+        ImmutableContactDetails expectedContactDetails = ExpectedObjectBuilder.buildImmutableContactDetails();
 
         assertThat(contactDetails)
                 .usingRecursiveComparison()
                 .isEqualTo(expectedContactDetails);
+    }
+
+    @Test
+    @DisplayName("Deserialize a JSON with complex data structure to an immutable object with custom properties")
+    public void deserializeJsonWithComplexDataStructureToImmutableObjectWithCustomProperties() throws IOException {
+        InputStream jsonFile = getClass().getClassLoader().getResourceAsStream("provider_configuration.json");
+
+        ObjectMapper mapper = new ObjectMapper();
+
+        // Take a look at ImmutableProviderConfiguration class to see how it maps a complex data structure
+        // to the custom properties
+        ImmutableProviderConfiguration providerConfiguration = mapper
+                .registerModule(new ParameterNamesModule())
+                .setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+                .readValue(jsonFile, ImmutableProviderConfiguration.class);
+
+        ImmutableProviderConfiguration expectedProviderConfiguration = ExpectedObjectBuilder
+                .buildImmutableProviderConfiguration();
+
+        assertThat(providerConfiguration)
+                .usingRecursiveComparison()
+                .isEqualTo(expectedProviderConfiguration);
     }
 }

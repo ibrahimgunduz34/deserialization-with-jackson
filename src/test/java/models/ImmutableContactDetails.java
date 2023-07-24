@@ -1,11 +1,11 @@
 package models;
 
-public class ContactDetails {
+public class ImmutableContactDetails {
     private final String firstName;
     private final String lastName;
     private final String email;
 
-    public ContactDetails(String firstName, String lastName, String email) {
+    public ImmutableContactDetails(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

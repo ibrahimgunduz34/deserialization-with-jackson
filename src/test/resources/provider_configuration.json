@@ -1,0 +1,8 @@
+{
+  "configuration_id": "7905432d-ee11-4140-a68a-15eda8b14ca1",
+  "provider_name": "MyPaymentProcessor",
+  "configuration": {
+    "api_key": "32b4b7a7-8d88-4a37-a39e-5b58a72bedf6",
+    "secret_key": "86c7f699-ed3b-4cbc-bb96-0a615401e9ab"
+  }
+}
