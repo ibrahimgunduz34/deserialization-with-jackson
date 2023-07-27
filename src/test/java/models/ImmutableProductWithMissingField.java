@@ -1,16 +1,14 @@
 package models;
 
-public class ImmutableProduct {
+public class ImmutableProductWithMissingField {
     private final String id;
     private final String name;
     private final String description;
-    private final Double price;
 
-    public ImmutableProduct(String id, String name, String description, Double price) {
+    public ImmutableProductWithMissingField(String id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.price = price;
     }
 
     public String getId() {
@@ -23,9 +21,5 @@ public class ImmutableProduct {
 
     public String getDescription() {
         return description;
-    }
-
-    public Double getPrice() {
-        return price;
     }
 }

@@ -1,7 +1,6 @@
 import models.*;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class ExpectedObjectBuilder {
     public static MutableProduct buildMutableProduct() {
@@ -19,6 +18,14 @@ public class ExpectedObjectBuilder {
                 "Green Shirt",
                 "A beautiful green shirt",
                 102.8543529
+        );
+    }
+
+    public static ImmutableProductWithMissingField buildImmutableProductWithMissingFields () {
+        return new ImmutableProductWithMissingField(
+                "ee53eb56-3ee5-4bf6-95b4-c9ce90741417",
+                "Green Shirt",
+                "A beautiful green shirt"
         );
     }
 
